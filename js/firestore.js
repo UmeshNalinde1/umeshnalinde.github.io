@@ -11,17 +11,27 @@ var firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 function onClick() {
-
-    firebase.firestore().collection('data').add({
-        name: 'Umesh Nalinde',
-        email: 'UmeshPande6@gmail.com',
-        subject: 'Hello',
-        message: 'Message'
-    }).then(function () {
-        window.alert("Submit Successful");
-    }).catch(function (error) {
-        console.error('Error writing new message to Firebase Database', error).then(function () {
-            window.alert("Error");
+    var name = document.querySelector("#contactName");
+    var email = document.querySelector("#contactEmail");
+    var subject = document.querySelector("#contactSubject");
+    var message = document.querySelector("#contactMessage");
+    if (name.value != "" && email.value != "" && subject.value != "" && message.value != "") {
+        firebase.firestore().collection('data').add({
+            name: name.value,
+            email: email.value,
+            subject: subject.value,
+            message: message.value,
+        }).then(function () {
+            window.alert("Submit Successful");
+        }).catch(function (error) {
+            console.error('Error writing new message to Firebase Database', error).then(function () {
+                window.alert("Error");
+            });
         });
-    });
+    }
+    else{
+        window.alert("Enter Correct input");
+    }
+
+
 }
