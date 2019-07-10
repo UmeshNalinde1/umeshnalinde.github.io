@@ -638,7 +638,17 @@
                                 cols="50" required="" aria-required="true" class="full-width"></textarea>
                         </div>
                         <div class="form-field">
-                            <button class="full-width btn--primary">Submit</button>
+                            <button class="full-width btn--primary" onclick="function saveMessage() {
+                                // Add a new message entry to the Firebase database.
+                                return firebase.firestore().collection('db').add({
+                                    name: 'Umesh Nalinde',
+                                    email: 'UmeshPande6@gmail.com',
+                                    subject: 'Hello',
+                                    message: 'Message'
+                                }).catch(function (error) {
+                                    console.error('Error writing new message to Firebase Database', error);
+                                });
+                            }">Submit</button>
                             <div class="submit-loader">
                                 <div class="text-loader">Sending...</div>
                                 <div class="s-loader">
@@ -651,6 +661,17 @@
 
                     </fieldset>
                 </form>
+                <button onclick="function saveMessage() {
+                    // Add a new message entry to the Firebase database.
+                     firebase.firestore().collection('db').add({
+                        name: 'Umesh Nalinde',
+                        email: 'UmeshPande6@gmail.com',
+                        subject: 'Hello',
+                        message: 'Message'
+                    }).catch(function (error) {
+                        console.error('Error writing new message to Firebase Database', error);
+                    });
+                }">Submit FireSotre</button>
 
                 <!-- contact-warning -->
                 <div class="message-warning">
