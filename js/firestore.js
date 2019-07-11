@@ -11,7 +11,7 @@ var firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 function onClick() {
-    var temp = firebase.firestore.FieldValue.serverTimestamp();
+    var temp = toString(firebase.firestore.FieldValue.serverTimestamp());
     var name = document.querySelector("#contactName");
     var email = document.querySelector("#contactEmail");
     var subject = document.querySelector("#contactSubject");
