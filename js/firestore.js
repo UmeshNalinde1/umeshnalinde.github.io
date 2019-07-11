@@ -11,17 +11,16 @@ var firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 function onClick() {
-    var name = document.querySelector("#contactName");
-    var email = document.querySelector("#contactEmail");
-    var subject = document.querySelector("#contactSubject");
-    var message = document.querySelector("#contactMessage");
-    if (name.value != "" && email.value != "" && subject.value != "" && message.value != "") {
-
-        firebase.firestore().collection('db').document(email.value).collection("messages").add({
-            name: name.value,
-            email: email.value,
-            subject: subject.value,
-            message: message.value,
+    var name = document.querySelector("#contactName").value;
+    var email = document.querySelector("#contactEmail").value;
+    var subject = document.querySelector("#contactSubject").value;
+    var message = document.querySelector("#contactMessage").value;
+    if (name != "" && email != "" && subject != "" && message != "") {
+        firebase.firestore().collection('database').add({
+            name: name,
+            email: email,
+            subject: subject,
+            message: message,
             timestamp: firebase.firestore.FieldValue.serverTimestamp()
         }).then(function () {
             window.alert("Submit Successful");
@@ -31,7 +30,7 @@ function onClick() {
             });
         });
     }
-    else {
+    else{
         window.alert("Enter Correct input");
     }
 
