@@ -11,12 +11,14 @@ var firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 function onClick() {
+    var temp = firebase.firestore.FieldValue.serverTimestamp();
     var name = document.querySelector("#contactName");
     var email = document.querySelector("#contactEmail");
     var subject = document.querySelector("#contactSubject");
     var message = document.querySelector("#contactMessage");
     if (name.value != "" && email.value != "" && subject.value != "" && message.value != "") {
-        firebase.firestore().collection('messages').add({
+
+        firebase.firestore().collection('messages').document(temp).set({
             name: name.value,
             email: email.value,
             subject: subject.value,
@@ -30,7 +32,7 @@ function onClick() {
             });
         });
     }
-    else{
+    else {
         window.alert("Enter Correct input");
     }
 
