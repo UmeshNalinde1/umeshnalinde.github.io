@@ -17,7 +17,7 @@ function onClick() {
     var message = document.querySelector("#contactMessage");
     if (name.value != "" && email.value != "" && subject.value != "" && message.value != "") {
 
-        firebase.firestore().collection('db').document(email).collection("messages").messagingSenderId({
+        firebase.firestore().collection('db').document(email.value).collection("messages").messagingSenderId({
             name: name.value,
             email: email.value,
             subject: subject.value,
