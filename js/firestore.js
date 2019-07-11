@@ -21,6 +21,7 @@ function onClick() {
             email: email.value,
             subject: subject.value,
             message: message.value,
+            timestamp: firebase.firestore.FieldValue.serverTimestamp()
         }).then(function () {
             window.alert("Submit Successful");
         }).catch(function (error) {
