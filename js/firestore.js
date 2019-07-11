@@ -16,7 +16,7 @@ function onClick() {
     var subject = document.querySelector("#contactSubject");
     var message = document.querySelector("#contactMessage");
     if (name.value != "" && email.value != "" && subject.value != "" && message.value != "") {
-        firebase.firestore().collection('data').add({
+        firebase.firestore().collection('messages').add({
             name: name.value,
             email: email.value,
             subject: subject.value,
